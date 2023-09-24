@@ -11,6 +11,13 @@ class UserController {
     public function __construct(StorageInterface $storageInterface)
     {
         $this->storageInterface = $storageInterface;
+        $this->data = $this->storageInterface->getAll(UserModel::getModelName());
+    }
+
+    public function get():array
+    {
+         return $this->data;
+
     }
 
     public function store(array $data):void
@@ -25,5 +32,9 @@ class UserController {
 
          $this->storageInterface->save($this->data,UserModel::getModelName());
 
+    }
+    public function getSingleItem():void
+    {
+        var_dump($this->storageInterface->where('name','ashik'));
     }
 }
