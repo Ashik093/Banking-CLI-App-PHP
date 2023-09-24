@@ -14,14 +14,36 @@ class UserController {
         $this->data = $this->storageInterface->getAll(UserModel::getModelName());
     }
 
-    public function get():array
+    public function getAllCustomer():array
     {
          return $this->data;
 
     }
 
-    public function store(array $data):void
-    {
+    public function register(array $data):void
+    {  
+        if($this->storageInterface->where('email',$data['email'])){
+            print("Email already exist in our records.\n");
+        }else{
+            $this->store($data);
+            print("Customer registration success.\n");
+        }
+
+    }
+
+
+    public function login(array $data):void
+    {  
+        if($this->storageInterface->where('email',$data['email']) && $this->storageInterface->where('password',md5(trim($data['password']," ")))){
+            print("Login success.\n");
+        }else{
+            print("Wrong credentials.\n");
+        }
+
+    }
+
+    public function store(array $data):bool
+    {   
          $user = new UserModel();
          $user->name = $data['name'];
          $user->email = $data['email'];
@@ -29,12 +51,10 @@ class UserController {
          $user->role =$data['role'];
 
          $this->data[] = $user;
-
          $this->storageInterface->save($this->data,UserModel::getModelName());
 
+         return true;
+
     }
-    public function getSingleItem():void
-    {
-        var_dump($this->storageInterface->where('name','ashik'));
-    }
+
 }

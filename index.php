@@ -1,18 +1,14 @@
 <?php
-use App\Controller\UserController;
-use App\Services\TxtFileStorageService;
-
 require_once 'vendor/autoload.php';
 
-$user = new UserController((new TxtFileStorageService()));
+use App\Command\CommandLine;
+use App\Controller\TransactionController;
+use App\Services\TxtFileStorageService;
 
-// $user->store([
-//     "name" => "rounak",
-//     "email" => "ashik@gmail.com",
-//     "password" => "123456",
-//     "role" =>"customer"
-// ]);
-// var_dump($user->get());
 
-$user->getSingleItem();
-var_dump($user->get());
+// $app = new CommandLine();
+// $app->run();
+$txtFile = new TxtFileStorageService();
+$transaction = new TransactionController($txtFile);
+var_dump($transaction->getAllTransaction());
+

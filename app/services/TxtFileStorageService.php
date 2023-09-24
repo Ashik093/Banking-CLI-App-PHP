@@ -20,14 +20,6 @@ class TxtFileStorageService implements StorageInterface{
         }
         return $this->data;
     }
-    public function getOne():array
-    {
-    //    if (isset($data['email']) && $data['email'] === $email) {
-    //                 fclose($file);
-    //                 return $data; 
-    //             }
-        return [];
-    }
     public function where(string $property,mixed $value):array
     {
         $this->data = array_filter($this->data,function($data)use($property,$value){
