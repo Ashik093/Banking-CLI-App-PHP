@@ -7,25 +7,25 @@ use App\Interface\StorageInterface;
 
 class TxtFileStorageService implements StorageInterface{
 
-    private array $data=[];
+    public array $data=[];
     public function save(array $data,string $model):void
     {
         file_put_contents(getTxtModelFilePath($model),serialize($data));
     }
-
-    public function getAll(string $model):array
+    
+    public function getAll(string $model):object
     {
         if (file_exists(getTxtModelFilePath($model))) {
             $this->data = unserialize(file_get_contents(getTxtModelFilePath($model)));
         }
-        return $this->data;
+        return $this;
     }
-    public function where(string $property,mixed $value):array
+    public function where(string $property,mixed $value):object
     {
         $this->data = array_filter($this->data,function($data)use($property,$value){
             return $data->{$property} == $value;
         });
-        return $this->data;
+        return $this;
     
     }
 }
