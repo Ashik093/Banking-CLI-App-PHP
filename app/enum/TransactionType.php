@@ -7,4 +7,14 @@ enum TransactionType{
     case DEPOSIT;
     case WITHDRAW;
     case TRANSFER;
+    public function toString(): string {
+        switch ($this) {
+            case self::DEPOSIT:
+                return 'DEPOSIT';
+            case self::WITHDRAW:
+                return 'WITHDRAW';
+            default:
+                return 'TRANSFER';
+        }
+    }
 }

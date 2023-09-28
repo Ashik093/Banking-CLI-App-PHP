@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use App\Enum\Role;
 use App\Interface\StorageInterface;
 use App\Models\UserModel;
 use App\Services\AuthService;

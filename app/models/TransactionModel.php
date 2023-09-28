@@ -12,6 +12,7 @@ class TransactionModel implements ModelInterface{
     public TransactionType $transactionType;
     public EntryType $entryType;
     public string $transferedBy;
+    public string $transferedTo;
     public static function getModelName():string
     {
         return 'transactions';

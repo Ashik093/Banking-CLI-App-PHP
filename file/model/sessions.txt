@@ -1,0 +1,1 @@
+a:1:{i:2;O:20:"App\Models\UserModel":4:{s:4:"name";s:5:"admin";s:5:"email";s:15:"admin@gmail.com";s:8:"password";s:32:"827ccb0eea8a706c4c34a16891f84e7b";s:4:"role";E:19:"App\Enum\Role:ADMIN";}}
